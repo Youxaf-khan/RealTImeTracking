@@ -1,20 +1,14 @@
-class SamsaraApiSevice
-  def intialize(vehicleIds = [])
-    if vehicleIds.present?
-      @full_url = "https://api.samsara.com/fleet/vehicles/stats?vehicleIds=#{vehicleIds}"
-    else
-      puts 'No fleets to track'
-    end
-  end
+class SamsaraApiService
+  def intialize(); end
 
-  def query
+  def call
     track_vehicles = []
-    response = HTTParty.get(@full_url)
+    response = HTTParty.get("https://api.samsara.com/fleet/vehicles/stats?types=gps", headers: {"Authorization" => "Bearer #{ENV['SAMSARA_API_KEY']}" })
     vehicles_data = response["data"]
     if vehicles_data.present?
       vehicles_data.each do |vehicle|
         locate(vehicle)
-        track_vehicles << vehicle["address"] if vehicle["address"]
+        track_vehicles << vehicle
       end
       track_vehicles
     end
@@ -24,11 +18,34 @@ class SamsaraApiSevice
     if vehicle.blank?
       return nil
     end
-    gps = vehicle['gps']
-    address = vehicle['address']
+
     id = vehicle['id']
     name = vehicle['name']
-    latitude = vehicle['latitude']
-    longitude = vehicle['longitude']
+    gps = vehicle['gps']
+
+    time = vehicle['gps']['time']
+    latitude = vehicle['gps']['latitude']
+    longitude = vehicle['gps']['longitude']
+    headingdegree = vehicle['gps']['headingDegrees']
+    speedmilesperhour = vehicle['gps']['speedMilesPerHour']
+    address = vehicle['gps']['reverseGeo']['formattedLocation']
+    isecuspeed = vehicle['gps']['isEcuSpeed']
+
+    puts 'Saving location for vehicle:', vehicle['name']
+
+    vehicle = Vehicle.find_or_create_by(id: vehicle['id'])
+    vehicle.update(
+      identifier: id,
+      name: name,
+      gps: gps,
+      time: time,
+      latitude: latitude,
+      longitude: longitude,
+      headingDegrees: headingdegree,
+      speedMilesPerHour: speedmilesperhour,
+      location: address,
+      isEcuSpeed: isecuspeed
+    )
+      puts 'updating coordinates'
   end
 end

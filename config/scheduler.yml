@@ -1,0 +1,4 @@
+sync_vehicles:
+  cron: "*/10 * * * *"
+  class: "SyncVehicles"
+  queue: default
