@@ -1,28 +1,37 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("FleetChannel", {
-  connected() {
-    // Called when the subscription is ready for use on the server
-    console.log("we are connected")
-  },
+$(document).on("turbolinks:load", function () {
 
-  disconnected() {
-    // Called when the subscription has been terminated by the server
-  },
+  consumer.subscriptions.create("FleetChannel", {
+    connected() {
+      // Called when the subscription is ready for use on the server
+      console.log("we are connected")
+    },
 
-  received(data) {
-    // Called when there's incoming data on the websocket for this channel
-    console.log("Receving:")
-    const vehicle = data.vehicle
-    const tableBody = document.getElementById("table-body")
+    disconnected() {
+      // Called when the subscription has been terminated by the server
+    },
 
-    // for (const vehicle of vehicles) {
-      const tr = document.createElement("tr")
-      const content = `<td>${vehicle.latitude}</td>
-      <td>${vehicle.longitude}</td>`
+    received(data) {
+      // Called when there's incoming data on the websocket for this channel
+      console.log("receving:")
+      var vehicles = data.vehicle
 
-      tr.innerHTML = content
-      tableBody.appendChild(tr)
-    // }
-  },
-})
+      var tbody = $("#vehicles tbody"),
+        props = ["latitude", "longitude"]
+      $.each(vehicles, function (i, vehicle) {
+        var tr = $("<tr>")
+        $.each(props, function (i, prop) {
+          $("<td>").html(vehicle[prop]).appendTo(tr)
+        })
+        tbody.append(tr)
+      })
+
+        // $("div").append(
+        //   "<div>" + data.vehicle[0]["latitude"] + "</div>" +
+        //   "<div>" + data.vehicle[0]["longitude"] + "</div>"
+        // )
+    },
+  })
+
+});
