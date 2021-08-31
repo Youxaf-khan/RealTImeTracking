@@ -2,6 +2,6 @@ class SyncVehicles
   include Sidekiq::Worker
 
   def perform
-    SamsaraApiService.new.call
+    SamsaraApiService.call
   end
 end

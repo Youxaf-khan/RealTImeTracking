@@ -2,13 +2,6 @@
 <p>Find me in app/views/landing/index.html.erb</p>
 
 
-<table id="vehicles">
-        <thead>
-            <tr>
-                <th>Latitude</th><th>Longitude</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-  </table>
-<%= link_to "Update", root_path, remote: true %>
+<p>
+  <div id='map' data-vehicles="<%= @vehicles.to_a %>"></div>
+</p>

@@ -4,13 +4,14 @@ class VehiclesController < ApplicationController
   def create; end
 
   def index
-    @vehicles = Vehicle.order(created_at: :desc)
-    ActionCable.server.broadcast 'fleet_channel', vehicle: @vehicles
+    @vehicles = Vehicle.pluck(:id, :latitude, :longitude)
   end
 
   def show; end
 
-  def update; end
+  def edit
+    # @vehicles = Vehicle.order(created_at: :desc)
+  end
 
   def destroy; end
 
@@ -19,5 +20,4 @@ class VehiclesController < ApplicationController
   def set_vehicle
     @vehicle = Vehicle.find(params[:id])
   end
-
 end
