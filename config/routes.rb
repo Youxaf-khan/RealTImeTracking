@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  mount Sidekiq::Web => '/sidekiq'
-
   root 'vehicles#index'
 
 

@@ -180,6 +180,8 @@ GEM
     redis (4.4.0)
     regexp_parser (2.1.1)
     rubyzip (2.3.2)
+    rufus-scheduler (3.8.0)
+      fugit (~> 1.1, >= 1.1.6)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -260,6 +262,7 @@ DEPENDENCIES
   rails (~> 6.1.4)
   rails-jquery-autocomplete
   redis (~> 4.0)
+  rufus-scheduler
   sass-rails (>= 6)
   selenium-webdriver
   sidekiq

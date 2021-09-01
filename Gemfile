@@ -64,3 +64,4 @@ gem 'geocoder', '~> 1.6.7'
 gem 'sidekiq'
 gem "sidekiq-cron", "~> 1.1"
 gem 'rails-jquery-autocomplete'
+gem 'rufus-scheduler'
