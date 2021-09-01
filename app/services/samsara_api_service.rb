@@ -2,12 +2,10 @@ class SamsaraApiService
 
   def self.call
     track_vehicles = []
-    puts '----'
     response = HTTParty.get("https://api.samsara.com/fleet/vehicles/stats?types=gps", headers: {"Authorization" => "Bearer #{ENV['SAMSARA_API_KEY']}" })
     vehicles_data = response["data"]
 
     if vehicles_data.present?
-      puts 'response found -------'
       vehicles_data.each do |vehicle|
         locate(vehicle)
         track_vehicles << vehicle
@@ -15,7 +13,7 @@ class SamsaraApiService
       track_vehicles
     end
 
-    ActionCable.server.broadcast 'fleet_channel', vehicles: Vehicle.pluck(:id, :latitude, :longitude)
+    ActionCable.server.broadcast 'fleet_channel', vehicles: Vehicle.pluck(:id, :latitude, :longitude, :location)
   end
 
   def self.locate(vehicle)
