@@ -2,7 +2,7 @@ class VehiclesController < ApplicationController
   def create; end
 
   def index
-    @vehicles = Vehicle.pluck(:identifier, :latitude, :longitude, :location)
+    @vehicles = Vehicle.pluck(:name, :latitude, :longitude, :location)
   end
 
   def show; end
