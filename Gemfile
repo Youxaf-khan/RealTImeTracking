@@ -38,9 +38,5 @@ gem 'figaro', '~> 1.2.0'
 gem 'geocoder', '~> 1.6.7'
 gem 'httparty', '~> 0.18.1'
 gem 'rails-jquery-autocomplete'
-<<<<<<< HEAD
 gem 'rufus-scheduler', '~> 3.8.0'
 gem 'sidekiq', '~>6.2.2'
-=======
-gem 'rufus-scheduler'
->>>>>>> 13d76ca02c33e72586114f4badb5087c61c51755

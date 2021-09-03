@@ -259,11 +259,8 @@ DEPENDENCIES
   rails (~> 6.1.4)
   rails-jquery-autocomplete
   redis (~> 4.0)
-<<<<<<< HEAD
   rufus-scheduler (~> 3.8.0)
-=======
-  rufus-scheduler
->>>>>>> 13d76ca02c33e72586114f4badb5087c61c51755
+
   sass-rails (>= 6)
   selenium-webdriver
   sidekiq (~> 6.2.2)
