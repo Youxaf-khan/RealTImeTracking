@@ -3,7 +3,5 @@ class FleetChannel < ApplicationCable::Channel
     stream_from 'fleet_channel'
   end
 
-  def unsubscribed
-    # Any cleanup needed when channel is unsubscribed
-  end
+  def unsubscribed; end
 end

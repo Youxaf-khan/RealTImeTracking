@@ -6,55 +6,48 @@ import { map } from "jquery";
     })
   })
 
-  window.initMap = function initMap(locations) {
-
-    var infowindow = new google.maps.InfoWindow({})
+  window.initMap = function initMap() {
+    let markers = [];
     var bounds = new google.maps.LatLngBounds()
-    var marker
-
     var map = new google.maps.Map(document.getElementById("map"), {
       zoom: 4,
     })
-    window.bound = bounds
+
+    window.bounds = bounds
     window.gmap = map
-    window.vehicleinfo = infowindow
-
-    if (typeof locations != "undefined") {
-
-      for (var i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-          label: locations[i][0],
-          map: gmap,
-        })
-        bounds.extend(marker.position)
-      }
-      gmap.fitBounds(bounds)
-    }
+    window.markers =markers
   }
 
   window.updateMap = function updateMap(locations) {
-    var marker
-    if (typeof locations != "undefined") {
 
-      for (var i = 0; i < locations.length; i++) {
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-          label: locations[i][0],
-          map: gmap,
-        })
-        bound.extend(marker.position)
+    var infowindow = new google.maps.InfoWindow({})
 
-        google.maps.event.addListener(marker,"click",(function (marker, i) {
-          return function () {
-            vehicleinfo.setContent(
-              "Name: " + locations[i][0] +
-              ", Location: " + locations[i][3]
-            )
-            vehicleinfo.open(gmap, marker)
-          }
-        })(marker, i))
+      debugger
+    if (markers.length === locations.length){
+      for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(null)
       }
-      gmap.fitBounds(bound)
+      markers = [];
     }
+
+    for (let i = 0; i < locations.length; i++) {
+      const marker = new google.maps.Marker({
+        position: new google.maps.LatLng(locations[i]["gps"]["latitude"], locations[i]["gps"]["longitude"]),
+        label: locations[i]["name"],
+        map: gmap,
+      });
+      bounds.extend(marker.position)
+
+      google.maps.event.addListener(marker,"click",(function (marker, i) {
+        return function () {
+          infowindow.setContent(
+            "Name: " + locations[i]["name"] +
+            ", Location: " + locations[i]["gps"]["reverseGeo"]["formattedLocation"]
+          )
+          infowindow.open(gmap, marker)
+        }
+      })(marker, i))
+      markers.push(marker)
+    }
+    gmap.fitBounds(bounds)
   }

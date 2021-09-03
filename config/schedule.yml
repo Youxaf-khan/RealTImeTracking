@@ -1,3 +1,4 @@
-sync_vehicles:
-  cron: "*/1 * * * *"
-  class: "SyncVehicles"
+# sync_vehicles:
+#   cron: "*/1 * * * *"
+#   class: "SyncVehicles"
+#using rufus see rufus.rb in initializer

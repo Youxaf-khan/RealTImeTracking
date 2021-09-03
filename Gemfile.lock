@@ -180,6 +180,8 @@ GEM
     redis (4.4.0)
     regexp_parser (2.1.1)
     rubyzip (2.3.2)
+    rufus-scheduler (3.8.0)
+      fugit (~> 1.1, >= 1.1.6)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
@@ -198,9 +200,6 @@ GEM
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
       redis (>= 4.2.0)
-    sidekiq-cron (1.2.0)
-      fugit (~> 1.1)
-      sidekiq (>= 4.2.1)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -249,9 +248,9 @@ DEPENDENCIES
   byebug
   capistrano-figaro-yml
   capybara (>= 3.26)
-  figaro
+  figaro (~> 1.2.0)
   geocoder (~> 1.6.7)
-  httparty
+  httparty (~> 0.18.1)
   jbuilder (~> 2.7)
   listen (~> 3.3)
   pg
@@ -260,10 +259,14 @@ DEPENDENCIES
   rails (~> 6.1.4)
   rails-jquery-autocomplete
   redis (~> 4.0)
+<<<<<<< HEAD
+  rufus-scheduler (~> 3.8.0)
+=======
+  rufus-scheduler
+>>>>>>> 13d76ca02c33e72586114f4badb5087c61c51755
   sass-rails (>= 6)
   selenium-webdriver
-  sidekiq
-  sidekiq-cron (~> 1.1)
+  sidekiq (~> 6.2.2)
   spring
   turbolinks (~> 5)
   tzinfo-data

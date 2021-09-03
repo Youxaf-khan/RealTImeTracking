@@ -9,7 +9,6 @@ consumer.subscriptions.create("FleetChannel", {
   },
 
   received(data) {
-    // Called when there's incoming data on the websocket for this channel
     console.log('receiving:')
     updateMap(data.vehicles)
   },
