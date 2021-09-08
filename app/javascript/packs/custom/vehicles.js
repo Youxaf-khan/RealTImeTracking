@@ -12,7 +12,6 @@ import { map } from "jquery";
     var map = new google.maps.Map(document.getElementById("map"), {
       zoom: 4,
     })
-
     window.bounds = bounds
     window.gmap = map
     window.markers =markers
@@ -20,8 +19,8 @@ import { map } from "jquery";
 
   window.updateMap = function updateMap(locations) {
     var infowindow = new google.maps.InfoWindow({})
-
     if (markers.length === locations.length){
+
       for (let i = 0; i < markers.length; i++) {
         markers[i].setMap(null)
       }
