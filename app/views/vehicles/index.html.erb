@@ -1,5 +1,5 @@
 <h1 style='color: white'>Tracking fleet</h1>
-
+<%= button_to "Export", export_path, method: :get %>
 <p>
   <div id='map' data-vehicles="<%= @vehicles.to_a %>"></div>
 </p>

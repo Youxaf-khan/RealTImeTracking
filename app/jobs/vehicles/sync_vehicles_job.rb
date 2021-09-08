@@ -3,7 +3,7 @@ module Vehicles
     queue_as :default
 
     def perform
-      Samsara::UpdateVehiclesService.call
+      Vehicles::UpdateVehiclesService.call
     end
   end
 end

@@ -5,8 +5,8 @@ module Samsara
     end
 
     def call
-      puts @response["data"]
-      @vehicles_data = @response["data"]
+      puts @response['data']
+      @vehicles_data = @response['data']
       @vehicles_data.each do |vehicle|
         update_vehicle(vehicle)
       end
@@ -15,6 +15,7 @@ module Samsara
 
     def update_vehicle(vehicle)
       return nil if vehicle.blank?
+
       id = vehicle['id']
       name = vehicle['name']
       gps = vehicle['gps']
