@@ -1,4 +1,4 @@
-module Samsara
+module Vehicles
   class UpdateVehiclesService < ApplicationService
     def initialize
       @response = Samsara::Api::GetVehiclesService.call
