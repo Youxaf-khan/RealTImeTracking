@@ -18,7 +18,7 @@
   }
 
   window.updateMap = function updateMap(locations) {
-    remove_marker(locations)
+    RemoveMarker(locations)
 
     for (let i = 0; i < locations.length; i++) {
       const marker = new google.maps.Marker({
@@ -42,10 +42,10 @@
     gmap.fitBounds(bounds)
   }
 
-  function remove_marker(locations) {
+  function RemoveMarker(locations) {
     if (markers.length === locations.length) {
 
-      for (let i = 0; i < markers.length; i++) {
+        for (let i = 0; i < markers.length; i++) {
         markers[i].setMap(null)
       }
       markers = []
