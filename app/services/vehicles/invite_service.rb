@@ -13,15 +13,13 @@ module Vehicles
         dis_lat = dis_lat * Math::PI / 180
         dis_lng = dis_lng * Math::PI / 180
 
-        a = Math.sin(dis_lat / 2) * Math.sin(dis_lat / 2) +
-            Math.cos(@home_lat * Math::PI / 180) * Math.cos(vehicle.latitude * Math::PI / 180) *
-            Math.sin(dis_lng / 2) * Math.sin(dis_lng / 2)
-        c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-        d = 6371 * c
+        distance = Math.sin(dis_lat / 2) * Math.sin(dis_lat / 2) +
+                   Math.cos(@home_lat * Math::PI / 180) * Math.cos(vehicle.latitude * Math::PI / 180) *
+                   Math.sin(dis_lng / 2) * Math.sin(dis_lng / 2)
+        calculation = 2 * Math.atan2(Math.sqrt(distance), Math.sqrt(1 - distance))
+        distance_from_base = 6371 * calculation
 
-        if d < 200
-          @invite << vehicle
-        end
+        @invite << vehicle if distance_from_base < 200
       end
       @invite
     end

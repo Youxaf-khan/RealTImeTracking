@@ -7,10 +7,10 @@ class CreateVehicles < ActiveRecord::Migration[6.1]
       t.datetime :time
       t.float :latitude
       t.float :longitude
-      t.float :headingDegrees
-      t.float :speedMilesPerHour
+      t.float :heading_degrees
+      t.float :speed_miles_per_hour
       t.string :location
-      t.boolean :isEcuSpeed
+      t.boolean :is_ecu_speed
 
       t.timestamps
     end

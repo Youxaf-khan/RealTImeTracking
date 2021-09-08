@@ -57,4 +57,3 @@ gem 'httparty', '~> 0.18.1'
 gem 'rails-jquery-autocomplete'
 gem 'rufus-scheduler', '~> 3.8.0'
 gem 'sidekiq', '~>6.2.2'
--

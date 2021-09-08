@@ -1,5 +1,3 @@
-import { map } from "jquery";
-
   jQuery(function ($) {
     $(window).on("load", function () {
       initMap($("#map").data("vehicles"));
@@ -9,23 +7,18 @@ import { map } from "jquery";
   window.initMap = function initMap() {
     let markers = [];
     var bounds = new google.maps.LatLngBounds()
+    var infowindow = new google.maps.InfoWindow({})
     var map = new google.maps.Map(document.getElementById("map"), {
       zoom: 4,
     })
     window.bounds = bounds
     window.gmap = map
     window.markers =markers
+    window.infowindow = infowindow
   }
 
   window.updateMap = function updateMap(locations) {
-    var infowindow = new google.maps.InfoWindow({})
-    if (markers.length === locations.length){
-
-      for (let i = 0; i < markers.length; i++) {
-        markers[i].setMap(null)
-      }
-      markers = [];
-    }
+    remove_marker(locations)
 
     for (let i = 0; i < locations.length; i++) {
       const marker = new google.maps.Marker({
@@ -47,4 +40,14 @@ import { map } from "jquery";
       markers.push(marker)
     }
     gmap.fitBounds(bounds)
+  }
+
+  function remove_marker(locations) {
+    if (markers.length === locations.length) {
+
+      for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(null)
+      }
+      markers = []
+    }
   }
