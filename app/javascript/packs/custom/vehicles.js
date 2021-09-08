@@ -19,10 +19,8 @@ import { map } from "jquery";
   }
 
   window.updateMap = function updateMap(locations) {
-
     var infowindow = new google.maps.InfoWindow({})
 
-      debugger
     if (markers.length === locations.length){
       for (let i = 0; i < markers.length; i++) {
         markers[i].setMap(null)

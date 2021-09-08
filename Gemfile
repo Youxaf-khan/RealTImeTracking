@@ -35,7 +35,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'figaro', '~> 1.2.0'
-gem 'geocoder', '~> 1.6.7'
 gem 'httparty', '~> 0.18.1'
 gem 'rails-jquery-autocomplete'
 gem 'rufus-scheduler', '~> 3.8.0'
