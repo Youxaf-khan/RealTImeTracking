@@ -6,8 +6,10 @@ module Vehicles
 
     def call
       @response['data'].each { |vehicle| update_vehicle(vehicle) }
-      ActionCable.server.broadcast 'vehicle_channel', vehicles: @response['data']
+      ActionCable.server.broadcast 'vehicles_channel', vehicles: @response['data']
     end
+
+    private
 
     def update_vehicle(vehicle)
       return nil if vehicle.blank?

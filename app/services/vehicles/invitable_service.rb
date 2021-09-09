@@ -1,5 +1,5 @@
 module Vehicles
-  class InviteService < ApplicationService
+  class InvitableService < ApplicationService
     def initialize(lat = 37.998819, lng = -121.2866481)
       @home_lat = lat
       @home_lng = lng
