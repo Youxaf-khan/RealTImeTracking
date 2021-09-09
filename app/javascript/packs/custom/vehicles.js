@@ -6,12 +6,12 @@ jQuery(function ($) {
 
 window.initMap = function initMap() {
   let markers = [];
-  var bounds = new google.maps.LatLngBounds()
   var infowindow = new google.maps.InfoWindow({})
   var map = new google.maps.Map(document.getElementById("map"), {
+    center: new google.maps.LatLng(37.998819,-121.2866481),
     zoom: 4,
   })
-  window.bounds = bounds
+
   window.gmap = map
   window.markers = markers
   window.infowindow = infowindow
@@ -27,8 +27,6 @@ window.updateMap = function updateMap(locations) {
       map: gmap,
     });
 
-    bounds.extend(marker.position)
-
     google.maps.event.addListener(marker,"click",(function (marker, i) {
       return function () {
         infowindow.setContent(
@@ -40,7 +38,6 @@ window.updateMap = function updateMap(locations) {
     })(marker, i))
     markers.push(marker)
   }
-  gmap.fitBounds(bounds)
 }
 
 function removeMarker(locations) {
