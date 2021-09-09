@@ -1,6 +1,6 @@
 jQuery(function ($) {
   $(window).on("load", function () {
-    initMap($("#map").data("vehicles"));
+    initMap($(".vehicles #map"));
   })
 })
 

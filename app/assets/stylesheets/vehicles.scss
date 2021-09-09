@@ -1,7 +1,17 @@
-.map-container {
+.vehicles {
   height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 15%;
-  left: 0px;
+
+  .upper {
+    height: 20%;
+    min-height: 20%;
+  }
+  .lower {
+    height: 80%;
+    min-height: 80%;
+
+    #map{
+      width: 100%;
+      height: 100%;
+    }
+  }
 }

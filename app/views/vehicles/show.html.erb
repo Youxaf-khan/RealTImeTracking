@@ -1,5 +1,11 @@
-<h1>Tracking Vehicles</h1>
+<div class="vehicles">
+  <div class="upper">
+    <h1>Tracking Vehicles</h1>
 
-<%= link_to 'Export', export_vehicles_path(format: :csv) %>
+    <%= link_to 'Export', export_vehicles_path(format: :csv) %>
+  </div>
 
-<div id='map' class='map-container'></div>
+  <div class="lower">
+    <div id='map'></div>
+  </div>
+</div>
