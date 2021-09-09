@@ -14,8 +14,7 @@ module Vehicles
     def update_vehicle(vehicle)
       return nil if vehicle.blank?
 
-      vehicles = Vehicle.find_or_initialize_by(id: vehicle['id'])
-      vehicles.update(
+      Vehicle.find_or_initialize_by(id: vehicle['id']).update(
         identifier: vehicle['id'],
         name: vehicle['name'],
         gps: vehicle['gps'],
