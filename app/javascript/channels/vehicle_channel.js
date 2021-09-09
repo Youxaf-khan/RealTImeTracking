@@ -1,6 +1,6 @@
 import consumer from "./consumer"
 
-consumer.subscriptions.create("FleetChannel", {
+consumer.subscriptions.create("VehicleChannel", {
   connected() {
   },
 

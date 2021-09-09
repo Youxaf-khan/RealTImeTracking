@@ -3,7 +3,7 @@ module Vehicles
     queue_as :default
 
     def perform
-      Vehicles::UpdateVehiclesService.call
+      Vehicles::UpdateService.call
     end
   end
 end

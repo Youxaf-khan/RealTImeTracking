@@ -1,21 +1,18 @@
 module Vehicles
-  class UpdateVehiclesService < ApplicationService
+  class UpdateService < ApplicationService
     def initialize
       @response = Samsara::Api::GetVehiclesService.call
     end
 
     def call
-      @vehicles_data = @response['data']
-      @vehicles_data.each do |vehicle|
-        update_vehicle(vehicle)
-      end
-      ActionCable.server.broadcast 'fleet_channel', vehicles: @response['data']
+      @response['data'].each { |vehicle| update_vehicle(vehicle) }
+      ActionCable.server.broadcast 'vehicle_channel', vehicles: @response['data']
     end
 
     def update_vehicle(vehicle)
       return nil if vehicle.blank?
 
-      vehicles = Vehicle.find_or_create_by(id: vehicle['id'])
+      vehicles = Vehicle.find_or_initialize_by(id: vehicle['id'])
       vehicles.update(
         identifier: vehicle['id'],
         name: vehicle['name'],

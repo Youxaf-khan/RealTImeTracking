@@ -1,5 +1,5 @@
 class VehiclesController < ApplicationController
-  def index; end
+  def show; end
 
   def export
     respond_to do |format|

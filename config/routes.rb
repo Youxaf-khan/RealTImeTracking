@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root 'vehicles#index'
+  root 'vehicles#show'
 
   resource :vehicles, only: :show do
-    get :export, defaults:{ format: :csv }
+    get :export
   end
 end
