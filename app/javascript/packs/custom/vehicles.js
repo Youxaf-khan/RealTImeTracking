@@ -8,7 +8,9 @@ window.initMap = function initMap() {
   let markers = [];
   var infowindow = new google.maps.InfoWindow({})
   var map = new google.maps.Map(document.getElementById("map"), {
-    center: new google.maps.LatLng(37.998819,-121.2866481),
+    center: new google.maps.LatLng(
+      $('meta[name="home-lat"]').attr("content"),
+      $('meta[name="home-lng"]').attr("content")),
     zoom: 4,
   })
 
